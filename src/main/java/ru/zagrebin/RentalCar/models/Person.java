@@ -3,12 +3,13 @@ package ru.zagrebin.RentalCar.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
 @Entity
-@Table(name = "Person")
+@Table(name = "person")
 public class Person {
 
     @Id
@@ -23,9 +24,15 @@ public class Person {
     @Column(name = "year_of_birth")
     private int yearOfBirth;
 
+    @NotEmpty(message = "Данные пасспорта должны быть заполнены")
+    @Column(name = "passport")
+    private String passport;
     @Column(name = "contract_number")
     private int contractNumber;
 
+    @NotEmpty(message = "мобильный телефон не должен быть пустым")
+    @Column(name = "mobile_phone")
+    private String mobilePhone;
     @OneToMany(mappedBy = "owner")
     private List<Car> cars;
 
@@ -33,10 +40,13 @@ public class Person {
 
     }
 
-    public Person(String fullName, int yearOfBirth, int contractNumber) {
+    public Person(String fullName, int yearOfBirth, String passport, int contractNumber, String mobilePhone, List<Car> cars) {
         this.fullName = fullName;
         this.yearOfBirth = yearOfBirth;
+        this.passport = passport;
         this.contractNumber = contractNumber;
+        this.mobilePhone = mobilePhone;
+        this.cars = cars;
     }
 
     public int getId() {
@@ -63,12 +73,28 @@ public class Person {
         this.yearOfBirth = yearOfBirth;
     }
 
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
     public int getContractNumber() {
         return contractNumber;
     }
 
     public void setContractNumber(int contractNumber) {
         this.contractNumber = contractNumber;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
     }
 
     public List<Car> getCars() {

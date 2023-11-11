@@ -1,12 +1,19 @@
 package ru.zagrebin.RentalCar.dto;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import ru.zagrebin.RentalCar.models.Person;
+
+
+import java.util.Date;
 
 public class CarsDTO {
 
+    private int id;
     @NotEmpty(message = "Название авто не должно быть пустым")
     @Size(min = 2, max = 100, message = "Название авто должно быть от 2 до 100 символов длиной")
     private String model;
@@ -18,6 +25,7 @@ public class CarsDTO {
     @Min(value = 1980, message = "Год должен быть больше, чем 1980")
     private int year;
 
+
     @NotEmpty
     private String stateNumber;
 
@@ -26,6 +34,13 @@ public class CarsDTO {
     private int imageId;
 
     private int body;
+
+    private int personId;
+
+    private int price;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date takenAt;
 
 
     public String getModel() {
@@ -77,4 +92,37 @@ public class CarsDTO {
     public int getBody() {return body;}
 
     public void setBody(int body) {this.body = body;}
+
+
+    public Date getTakenAt() {
+        return takenAt;
+    }
+
+    public void setTakenAt(Date takenAt) {
+        this.takenAt = takenAt;
+    }
+
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

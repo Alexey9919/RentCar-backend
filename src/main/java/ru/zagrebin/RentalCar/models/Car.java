@@ -58,11 +58,14 @@ public class Car {
     @Column(name = "body")
     private int body;
 
+    @Column(name = "price")
+    private int price;
+
     public Car() {
 
     }
 
-    public Car(String model, String color, int year, String stateNumber, Person owner, Date takenAt, int rentalPeriod, boolean expired, List<Image> images, int imageId, int body) {
+    public Car(String model, String color, int year, String stateNumber, Person owner, Date takenAt, int rentalPeriod, boolean expired, List<Image> images, int imageId, int body, int price) {
         this.model = model;
         this.color = color;
         this.year = year;
@@ -74,6 +77,7 @@ public class Car {
         this.images = images;
         this.imageId = imageId;
         this.body = body;
+        this.price = price;
     }
 
     public int getId() {
@@ -116,9 +120,13 @@ public class Car {
         this.stateNumber = stateNumber;
     }
 
-    public Person getOwner() {return owner;}
+    public Person getOwner() {
+        return owner;
+    }
 
-    public void setOwner(Person owner) {this.owner = owner;}
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
 
     public Date getTakenAt() {
         return takenAt;
@@ -126,14 +134,6 @@ public class Car {
 
     public void setTakenAt(Date takenAt) {
         this.takenAt = takenAt;
-    }
-
-    public boolean isExpired() {
-        return expired;
-    }
-
-    public void setExpired(boolean expired) {
-        this.expired = expired;
     }
 
     public int getRentalPeriod() {
@@ -144,8 +144,14 @@ public class Car {
         this.rentalPeriod = rentalPeriod;
     }
 
-    public int getImageId() {return imageId;}
-    public void setImageId(int imageId) {this.imageId = imageId;}
+    public boolean isExpired() {
+        return expired;
+    }
+
+    public void setExpired(boolean expired) {
+        this.expired = expired;
+    }
+
     public List<Image> getImages() {
         return images;
     }
@@ -154,9 +160,29 @@ public class Car {
         this.images = images;
     }
 
-    public int getBody() {return body;}
+    public int getImageId() {
+        return imageId;
+    }
 
-    public void setBody(int body) {this.body = body;}
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    public int getBody() {
+        return body;
+    }
+
+    public void setBody(int body) {
+        this.body = body;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     //    @PrePersist
 //    private void init() {
@@ -169,4 +195,22 @@ public class Car {
         images.add(image);
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", year=" + year +
+                ", stateNumber='" + stateNumber + '\'' +
+                ", owner=" + owner +
+                ", takenAt=" + takenAt +
+                ", rentalPeriod=" + rentalPeriod +
+                ", expired=" + expired +
+                ", images=" + images +
+                ", imageId=" + imageId +
+                ", body=" + body +
+                ", price=" + price +
+                '}';
+    }
 }
