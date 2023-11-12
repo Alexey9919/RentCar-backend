@@ -39,6 +39,8 @@ public class CarsDTO {
 
     private int price;
 
+    private int idOwner;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date takenAt;
 
@@ -124,5 +126,13 @@ public class CarsDTO {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getIdOwner() {
+        return idOwner;
+    }
+
+    public void setIdOwner(int idOwner) {
+        this.idOwner = idOwner;
     }
 }

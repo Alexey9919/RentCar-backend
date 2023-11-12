@@ -61,11 +61,15 @@ public class Car {
     @Column(name = "price")
     private int price;
 
+    @Column(name = "id_owner")
+    private int idOwner;
+
     public Car() {
 
     }
 
-    public Car(String model, String color, int year, String stateNumber, Person owner, Date takenAt, int rentalPeriod, boolean expired, List<Image> images, int imageId, int body, int price) {
+    public Car(int id, String model, String color, int year, String stateNumber, Person owner, Date takenAt, int rentalPeriod, boolean expired, List<Image> images, int imageId, int body, int price, int idOwner) {
+        this.id = id;
         this.model = model;
         this.color = color;
         this.year = year;
@@ -78,6 +82,7 @@ public class Car {
         this.imageId = imageId;
         this.body = body;
         this.price = price;
+        this.idOwner = idOwner;
     }
 
     public int getId() {
@@ -182,6 +187,14 @@ public class Car {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getIdOwner() {
+        return idOwner;
+    }
+
+    public void setIdOwner(int idOwner) {
+        this.idOwner = idOwner;
     }
 
     //    @PrePersist
