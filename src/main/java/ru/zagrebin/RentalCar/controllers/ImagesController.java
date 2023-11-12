@@ -1,6 +1,5 @@
 package ru.zagrebin.RentalCar.controllers;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import ru.zagrebin.RentalCar.dto.ImagesDTO;
 import ru.zagrebin.RentalCar.models.Image;
 import ru.zagrebin.RentalCar.repositories.ImagesRepository;
 
@@ -18,8 +16,6 @@ import java.io.ByteArrayInputStream;
 @RestController
 @CrossOrigin
 public class ImagesController {
-
-//    private final ModelMapper modelMapper;
 
     private final ImagesRepository imagesRepository;
 
@@ -37,13 +33,4 @@ public class ImagesController {
                 .contentLength(image.getSize())
                 .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes())));
     }
-
-
-//    private Image convertToImages(ImagesDTO imagesDTO) {
-//        return modelMapper.map(imagesDTO, Image.class);
-//    }
-//
-//    private ImagesDTO convertToImagesDTO(Image image) {
-//        return modelMapper.map(image, ImagesDTO.class);
-//    }
 }

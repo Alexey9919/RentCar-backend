@@ -1,6 +1,5 @@
 package ru.zagrebin.RentalCar.dto;
 
-import jakarta.persistence.Column;
 
 import java.util.Date;
 

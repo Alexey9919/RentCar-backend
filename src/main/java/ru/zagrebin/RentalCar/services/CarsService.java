@@ -1,7 +1,6 @@
 package ru.zagrebin.RentalCar.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,9 +8,9 @@ import ru.zagrebin.RentalCar.models.Car;
 import ru.zagrebin.RentalCar.models.Image;
 import ru.zagrebin.RentalCar.models.Person;
 import ru.zagrebin.RentalCar.repositories.CarsRepository;
-import ru.zagrebin.RentalCar.repositories.ImagesRepository;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,28 +54,13 @@ public class CarsService {
         Car carToBeUpdated = carsRepository.findById(id).get();
 
         updateCar.setId(id);
+        updateCar.setTakenAt(new Date());
         updateCar.setOwner(carToBeUpdated.getOwner());
 
 
 
         carsRepository.save(updateCar);
     }
-
-//    @Transactional
-//    public void update(int id, Car updateCar, MultipartFile file) throws IOException {
-//        Image image = null;
-//        Car carToBeUpdated = carsRepository.findById(id).get();
-//        carsRepository.delete(findOne(id));
-//        updateCar.setId(id);
-//        updateCar.setOwner(carToBeUpdated.getOwner());
-//
-//        if (file.getSize() != 0) {
-//            image = toImageEntity(file);
-//            updateCar.addImageToCar(image);
-//        }
-//
-//        carsRepository.save(updateCar);
-//    }
 
     @Transactional
     public void delete(int id) {
@@ -87,20 +71,6 @@ public class CarsService {
         return carsRepository.findByModelStartingWith(query);
     }
 
-
-//    public List<Car> listCars(String model) {
-//        if (model != null) return carsRepository.findByModel(model);
-//        return carsRepository.findAll();
-//    }
-//
-
-
-//    public void saveCar(Car car) throws IOException {
-//
-//        Car carNew = car;
-//
-//        carsRepository.save(carNew);
-//    }
 
     public Optional<Person> getCarOwner(int id) {
         // Тут Hibernate.initialize() не нужен, так как владелец (сторона One) загружается не лениво
@@ -116,10 +86,6 @@ public class CarsService {
         image.setBytes(file.getBytes());
         return image;
     }
-
-//    public void deleteProduct(int id) {
-//        carsRepository.deleteById(id);
-//    }
 
     public Car getCarById(int id) {
         return carsRepository.findById(id).orElse(null);

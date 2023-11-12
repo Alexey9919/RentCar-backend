@@ -3,11 +3,7 @@ package ru.zagrebin.RentalCar.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-import ru.zagrebin.RentalCar.models.Car;
-import ru.zagrebin.RentalCar.models.Image;
 import ru.zagrebin.RentalCar.models.Person;
-import ru.zagrebin.RentalCar.repositories.CarsRepository;
 import ru.zagrebin.RentalCar.repositories.PeopleRepository;
 
 import java.io.IOException;
@@ -46,7 +42,6 @@ public class PeopleService {
         Person personToBeUpdated = peopleRepository.findById(id).get();
 
         updatePerson.setId(id);
-//        updatePerson.setOwner(carToBeUpdated.getOwner());
 
 
 

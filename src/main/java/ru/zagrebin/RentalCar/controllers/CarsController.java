@@ -5,7 +5,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.zagrebin.RentalCar.dto.CarsDTO;
@@ -68,22 +67,6 @@ public class CarsController {
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable("id") int id) {
-        carsService.delete(id);
-        return ResponseEntity.ok(HttpStatus.OK);
-    }
-
-//    @CrossOrigin
-//    @PatchMapping("/update/{id}")
-//    public ResponseEntity<HttpStatus> update(@PathVariable("id") int id, @RequestBody Car car, @RequestParam("file") MultipartFile file1) throws IOException {
-//        System.out.println(id);
-//        System.out.println(car);
-//        System.out.println(file1);
-//        carsService.update(id, car, file1);
-//        return ResponseEntity.ok(HttpStatus.OK);
-//    }
-
     @CrossOrigin
     @PatchMapping("/update/{id}")
     public ResponseEntity<HttpStatus> update(@PathVariable("id") int id, @RequestBody Car car) throws IOException {
@@ -94,36 +77,12 @@ public class CarsController {
     }
 
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") int id) {
+        carsService.delete(id);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
 
-
-
-//    @GetMapping()
-//    public String cars(@RequestParam(name = "model", required = false) String model, Model models) {
-//        models.addAttribute("cars", carsService.listCars(model));
-//        return "products";
-//    }
-//
-//
-//    @GetMapping("/{id}")
-//    public String carInfo(@PathVariable int id, Model model) {
-//        Car car = carsService.getCarById(id);
-//        model.addAttribute("car", car);
-//        model.addAttribute("images", car.getImages());
-//        return "product-info";
-//    }
-
-//    @GetMapping("/{id}")
-//    public CarsDTO getCar(@PathVariable("id") int id) {
-//        return convertToCarsDTO(carsService.findOne(id));
-//    }
-
-//
-
-//    @PostMapping("/product/delete/{id}")
-//    public String deleteProduct(@PathVariable int id) {
-//        carsService.deleteProduct(id);
-//        return "redirect:/";
-//    }
 
 
     private Car convertToCar(CarsDTO carsDTO) {

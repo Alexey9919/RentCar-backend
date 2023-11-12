@@ -1,12 +1,10 @@
 package ru.zagrebin.RentalCar.dto;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import ru.zagrebin.RentalCar.models.Person;
 
 
 import java.util.Date;
@@ -41,7 +39,7 @@ public class CarsDTO {
 
     private int idOwner;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date takenAt;
 
 

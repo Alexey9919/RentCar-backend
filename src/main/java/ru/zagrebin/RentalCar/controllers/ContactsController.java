@@ -6,13 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.zagrebin.RentalCar.dto.ContactsDTO;
-import ru.zagrebin.RentalCar.dto.PeopleDTO;
-import ru.zagrebin.RentalCar.models.Car;
 import ru.zagrebin.RentalCar.models.Contact;
-import ru.zagrebin.RentalCar.models.Person;
-import ru.zagrebin.RentalCar.repositories.ContactRepository;
 import ru.zagrebin.RentalCar.services.ContactsService;
-import ru.zagrebin.RentalCar.services.PeopleService;
 
 import java.util.List;
 import java.util.stream.Collectors;
